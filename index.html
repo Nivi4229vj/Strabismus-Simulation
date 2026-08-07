@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aravind Eye Care System - Strabismus Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="simulator-app">
+
+        <!-- ================= 1. START / LANDING SCREEN ================= -->
+        <div class="screen active" id="startScreen">
+            <div class="landing-card">
+                <div class="hospital-badge">
+                    <span class="badge-dot"></span> ARAVIND EYE CARE SYSTEM
+                </div>
+                
+                <div class="title-block">
+                    <h1 class="main-title">Strabismus<br><span class="highlight-text">Clinical Simulator</span></h1>
+                    <p class="sub-title">Department of Pediatric Ophthalmology & Adult Strabismus</p>
+                </div>
+                
+                <div class="ack-box">
+                    <span class="ack-label">Developed & Inspired For</span>
+                    <p class="ack-text">
+                        <strong>Aravind Eye Hospital & Postgraduate Institute of Ophthalmology</strong><br>
+                        An interactive diagnostic simulation tool for clinical training, cover-uncover testing, and prism alignment evaluation.
+                    </p>
+                    <button class="btn-primary start-btn" id="btnStartApp">Launch Simulator ►</button>
+                </div>
+                <div class="copyright-tag">© Aravind Eye Care System - Educational Tool</div>
+            </div>
+        </div>
+
+        <!-- ================= 2. MODE SELECTION SCREEN ================= -->
+        <div class="screen" id="modeScreen">
+            <div class="landing-card mode-card">
+                <div class="hospital-badge">
+                    <span class="badge-dot"></span> SELECT SIMULATION MODE
+                </div>
+                
+                <div class="mode-options">
+                    <button class="mode-select-btn explore-theme" id="btnChooseExplore">
+                        <div class="mode-icon">🔬</div>
+                        <div>
+                            <h3>Clinical Exploration</h3>
+                            <p>Simulate and observe deviations, phorias, and tropias dynamically</p>
+                        </div>
+                    </button>
+
+                    <button class="mode-select-btn test-theme" id="btnChooseTest">
+                        <div class="mode-icon">📋</div>
+                        <div>
+                            <h3>Patient Assessment (Test)</h3>
+                            <p>Evaluate and diagnose randomized Aravind patient cases</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="ack-badge-corner" id="btnShowAckModal">Hospital Info</div>
+                <div class="copyright-tag">© Aravind Eye Care System</div>
+            </div>
+        </div>
+
+        <!-- ================= 3. MAIN SIMULATOR SCREEN ================= -->
+        <div class="screen" id="simulatorScreen">
+            
+            <!-- Top Header Controls -->
+            <div class="sim-header">
+                <div class="header-left">
+                    <button class="icon-btn" id="btnHome" title="Main Menu">🏠</button>
+                    <span class="brand-mini">ARAVIND EYE CARE</span>
+                </div>
+                <div class="mode-indicator" id="modeIndicatorLabel">Clinical Exploration</div>
+                <button class="icon-btn help-btn" id="btnHelp" title="Clinical Guide">?</button>
+            </div>
+
+            <!-- Standalone Eyes Canvas Arena -->
+            <div class="face-canvas" id="canvas">
+                <div class="eyes-container">
+                    <!-- Right Eye (OD) -->
+                    <div class="eye-socket" id="socketOD">
+                        <span class="eye-label-tag">OD (Right)</span>
+                        <div class="iris-element" id="irisOD">
+                            <div class="light-reflex hidden" id="reflexOD"></div>
+                        </div>
+                    </div>
+                    <!-- Left Eye (OS) -->
+                    <div class="eye-socket" id="socketOS">
+                        <span class="eye-label-tag">OS (Left)</span>
+                        <div class="iris-element" id="irisOS">
+                            <div class="light-reflex hidden" id="reflexOS"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Draggable Tools -->
+                <div class="drag-tool target-tool" id="fixationTarget" style="left: 310px; top: 60px;" title="Fixation Target">
+                    <div class="target-cross">+</div>
+                </div>
+
+                <div class="drag-tool occluder-tool" id="occluderPaddle" style="left: 45px; top: 50px;" title="Occluder Paddle">
+                    <div class="occluder-head"></div>
+                    <div class="occluder-handle"></div>
+                </div>
+
+                <div class="drag-tool prism-tool" id="prismGlass" style="left: 510px; top: 90px;" title="Prism Bar">
+                    <span class="prism-label">PRISM</span>
+                </div>
+            </div>
+
+            <!-- Bottom Dock Control Panel -->
+            <div class="bottom-bar">
+                <button class="eye-toggle-btn active" id="btnOD">Fixing Eye: OD</button>
+
+                <!-- Explore Mode Inputs Panel -->
+                <div class="panel-section" id="exploreControls">
+                    <div class="input-matrix">
+                        <div class="matrix-header">
+                            <span>H (Δ)</span>
+                            <span>V (Δ)</span>
+                        </div>
+                        <div class="matrix-row">
+                            <label>Tropia</label>
+                            <input type="number" id="tropiaH" value="0">
+                            <input type="number" id="tropiaV" value="0">
+                        </div>
+                        <div class="matrix-row">
+                            <label>Phoria</label>
+                            <input type="number" id="phoriaH" value="0">
+                            <input type="number" id="phoriaV" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Mode Diagnosis Panel -->
+                <div class="panel-section hidden" id="testControls">
+                    <div class="test-eval-box">
+                        <div class="eval-row">
+                            <input type="number" id="ansPrimaryMag" value="0" class="mini-num" placeholder="Δ">
+                            <select id="ansPrimaryEye" class="mini-select">
+                                <option value="N/A">Eye</option>
+                                <option value="Right">Right (OD)</option>
+                                <option value="Left">Left (OS)</option>
+                            </select>
+                            <select id="ansPrimaryCond" class="mini-select wide">
+                                <option value="N/A">Condition</option>
+                                <option value="Esotropia">Esotropia</option>
+                                <option value="Exotropia">Exotropia</option>
+                                <option value="Hypertropia">Hypertropia</option>
+                                <option value="Hypotropia">Hypotropia</option>
+                                <option value="Esophoria">Esophoria</option>
+                                <option value="Exophoria">Exophoria</option>
+                            </select>
+                        </div>
+                        <div class="eval-footer">
+                            <span id="patientCounter" class="patient-badge">Patient 1/3</span>
+                            <button class="btn-submit" id="btnSubmitTest">Diagnose Case</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shared Action Tools -->
+                <div class="action-toolbar">
+                    <button class="tool-btn" id="btnPenlight" title="Penlight Reflex">🔦</button>
+                    <button class="tool-btn" id="btnLinkTools" title="Link Occluder + Prism">🔗</button>
+
+                    <div class="prism-control-box">
+                        <span class="unit-tag">Prism Power</span>
+                        <input type="number" id="prismPower" value="20" min="0" max="50">
+                        <button class="rotate-btn" id="btnRotatePrism" title="Base Orientation">🔄</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. CLINICAL GUIDE MODAL ================= -->
+        <div class="modal-overlay hidden" id="instructionModal">
+            <div class="modal-content">
+                <button class="close-modal-btn" id="btnCloseModal">×</button>
+                <h2>Aravind Clinical Guide</h2>
+                <p>This module simulates standard clinical strabismus evaluation procedures:</p>
+                <ul>
+                    <li><strong>Cover-Uncover Test:</strong> Detect manifest tropia.</li>
+                    <li><strong>Alternate Cover Test:</strong> Reveal total deviation (Phoria + Tropia).</li>
+                    <li><strong>Prism Bar Neutralization:</strong> Measure prism diopters (Δ).</li>
+                </ul>
+                <div class="modal-actions">
+                    <button class="btn-primary" id="btnStartSimulatorFromModal">Proceed to Simulator</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. ONBOARDING TUTORIAL ================= -->
+        <div class="tutorial-overlay hidden" id="tutorialOverlay">
+            <div class="tutorial-box" id="tutorialBox">
+                <p id="tutorialText">Welcome to the Aravind Strabismus Simulator.</p>
+                <div class="tutorial-footer">
+                    <button class="btn-next" id="btnTutorialNext">Next Step ►</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

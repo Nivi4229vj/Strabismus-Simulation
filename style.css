@@ -1,0 +1,744 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+}
+
+body {
+    background: #001219;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0f172a;
+}
+
+.simulator-app {
+    position: relative;
+    width: 680px;
+    height: 530px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 95, 115, 0.35);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Screen Transitions */
+.screen {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ================= 1 & 2. ARAVIND BRANDED LANDING ================= */
+.landing-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #005F73 0%, #0A9396 100%);
+    padding: 32px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.hospital-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    width: fit-content;
+    color: #E9D8A6;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #EE9B00;
+    border-radius: 50%;
+}
+
+.title-block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-title {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #ffffff;
+}
+
+.highlight-text {
+    color: #E9D8A6;
+}
+
+.sub-title {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-top: 6px;
+    font-weight: 500;
+    color: #94D2BD;
+}
+
+/* Acknowledgement White Box */
+.ack-box {
+    background: #ffffff;
+    padding: 20px 22px 55px 22px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    color: #001219;
+}
+
+.ack-label {
+    display: block;
+    font-size: 10px;
+    color: #005F73;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.ack-text {
+    font-size: 12px;
+    color: #2b2d42;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.ack-text strong {
+    color: #005F73;
+    font-weight: 700;
+}
+
+/* Launch Button */
+.start-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    background: #CA6702;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(202, 103, 2, 0.4);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.start-btn:hover {
+    background: #EE9B00;
+    transform: translateY(-2px);
+}
+
+.copyright-tag {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+
+/* ================= MODE SELECTION SCREEN ================= */
+.mode-card {
+    justify-content: space-between;
+}
+
+.mode-options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 480px;
+    margin: 15px 0;
+}
+
+.mode-select-btn {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 16px 20px;
+    border-radius: 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.mode-icon {
+    font-size: 26px;
+    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.explore-theme {
+    background: rgba(0, 48, 73, 0.6);
+    color: #ffffff;
+}
+
+.test-theme {
+    background: #94D2BD;
+    color: #001219;
+}
+
+.mode-select-btn h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.mode-select-btn p {
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+.mode-select-btn:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.ack-badge-corner {
+    position: absolute;
+    bottom: 24px;
+    right: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ack-badge-corner:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ================= 3. CLINICAL CANVAS & EYES ================= */
+.sim-header {
+    height: 48px;
+    background: #005F73;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mini {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    font-weight: 800;
+    color: #E9D8A6;
+}
+
+.icon-btn {
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.mode-indicator {
+    font-size: 13px;
+    font-weight: 700;
+    color: #94D2BD;
+}
+
+/* Canvas Area */
+.face-canvas {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: #f0fdfa;
+    overflow: hidden;
+}
+
+.eyes-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    display: flex;
+    gap: 90px;
+    pointer-events: none;
+}
+
+/* ================= VECTOR 2D EYE GRAPHICS ================= */
+.eye-socket {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    border-radius: 50%;
+    /* Sclera Top & Bottom Greyish Shadow Gradient */
+    background: linear-gradient(180deg, #b2c2d4 0%, #ffffff 20%, #ffffff 80%, #b2c2d4 100%);
+    border: 3px solid #0a101d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.eye-label-tag {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 800;
+    color: #005F73;
+    background: #e0f2fe;
+    padding: 2px 8px;
+    border-radius: 6px;
+    z-index: 5;
+}
+
+/* Blue Vector Iris with Radiating Spokes */
+.iris-element {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.04s ease-out;
+    border: 2px solid #00264d;
+    background: radial-gradient(circle, #0066cc 0%, #0052a5 70%, #003366 100%);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+}
+
+/* Radiating Rays / Spokes Pattern */
+.iris-element::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(77, 166, 255, 0.8) 0deg 5deg,
+        rgba(0, 51, 102, 0.6) 5deg 10deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 32%, black 33%, black 95%, transparent 96%);
+    mask: radial-gradient(circle, transparent 32%, black 33%, black 95%, transparent 96%);
+    pointer-events: none;
+}
+
+/* Black Pupil Center */
+.iris-element::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-color: #000000;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Catchlight Light Reflection */
+.light-reflex {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    width: 5px;
+    height: 5px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 3px #ffffff;
+}
+
+/* Draggable Clinical Tools */
+.drag-tool {
+    position: absolute;
+    z-index: 10;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.drag-tool:active { cursor: grabbing; }
+
+.target-tool {
+    width: 26px;
+    height: 150px;
+    background: #ffffff;
+    border: 2px solid #005F73;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.target-cross {
+    width: 18px;
+    height: 18px;
+    background: #AE2012;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.occluder-tool {
+    width: 95px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.occluder-head {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 18, 25, 0.85), rgba(0, 95, 115, 0.95));
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.occluder-handle {
+    width: 14px;
+    height: 90px;
+    background: #001219;
+    margin-top: -5px;
+    border-radius: 0 0 10px 10px;
+}
+
+.prism-tool {
+    width: 95px;
+    height: 95px;
+    background: linear-gradient(135deg, rgba(233, 216, 166, 0.6), rgba(148, 210, 189, 0.5));
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-right: 4px solid #EE9B00;
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.prism-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #005F73;
+    opacity: 0.7;
+}
+
+/* Bottom Bar Dock Panel */
+.bottom-bar {
+    height: 132px;
+    background: #001219;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: #ffffff;
+}
+
+.eye-toggle-btn {
+    border: 1px solid #0A9396;
+    background: #005F73;
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eye-toggle-btn.active {
+    background: #CA6702;
+    border-color: #EE9B00;
+}
+
+/* Explore Matrix Inputs */
+.input-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.matrix-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    font-size: 10px;
+    color: #94D2BD;
+    padding-right: 8px;
+}
+
+.matrix-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.matrix-row label { width: 50px; color: #E9D8A6; }
+
+.matrix-row input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #0A9396;
+    text-align: center;
+    background: #005F73;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Test Mode Panel */
+.test-eval-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.eval-row {
+    display: flex;
+    gap: 6px;
+}
+
+.mini-num {
+    width: 44px;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    background: #005F73;
+    color: #fff;
+    text-align: center;
+}
+
+.mini-select {
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    background: #005F73;
+    color: #fff;
+    font-size: 11px;
+}
+
+.mini-select.wide { width: 115px; }
+
+.eval-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-badge {
+    font-size: 11px;
+    color: #E9D8A6;
+}
+
+.btn-submit {
+    background: #CA6702;
+    border: none;
+    color: #ffffff;
+    padding: 5px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+/* Actions Bar */
+.action-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tool-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: #005F73;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.tool-btn.active {
+    background: #EE9B00;
+}
+
+.prism-control-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 6px 10px;
+    border-radius: 10px;
+    gap: 2px;
+}
+
+.unit-tag {
+    font-size: 8px;
+    color: #94D2BD;
+    text-transform: uppercase;
+}
+
+.prism-control-box input {
+    width: 40px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    text-align: center;
+    font-weight: 800;
+}
+
+.rotate-btn {
+    border: none;
+    background: transparent;
+    color: #E9D8A6;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Modals & Tutorials */
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 18, 25, 0.85);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ffffff;
+    width: 450px;
+    padding: 26px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    color: #005F73;
+}
+
+.modal-content h2 { font-size: 18px; color: #005F73; margin-bottom: 12px; }
+.modal-content p { font-size: 13px; color: #475569; margin-bottom: 10px; }
+.modal-content ul { margin-left: 20px; font-size: 13px; color: #334155; margin-bottom: 18px; }
+
+.btn-primary {
+    background: #005F73;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.tutorial-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+}
+
+.tutorial-box {
+    position: absolute;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    background: #001219;
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1px solid #0A9396;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    pointer-events: auto;
+}
+
+#tutorialText { font-size: 12px; line-height: 1.45; }
+
+.tutorial-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.btn-next {
+    background: #EE9B00;
+    color: #001219;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
