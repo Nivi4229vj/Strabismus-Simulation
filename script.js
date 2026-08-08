@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         targetScreen.classList.add('active');
         if (targetScreen === simulatorScreen) {
-            updateEyeMovement();
+            setTimeout(updateEyeMovement, 50); // Canvas layout update-க்கான சிறிய தாமதம்
         }
     }
 
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnShowAckModal) btnShowAckModal.onclick = function() { switchScreen(startScreen); };
 
     // Simulation Engine & Tools
+    const canvas = document.getElementById('canvas') || document.querySelector('.face-canvas');
     const target = document.getElementById('fixationTarget');
     const occluder = document.getElementById('occluderPaddle');
     const prism = document.getElementById('prismGlass');
@@ -109,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamic Eye Center Calculation for Fullscreen Responsiveness
     function getEyeCenters() {
-        const canvas = document.getElementById('canvas');
         if (!canvas || !socketOD || !socketOS) return { OD: { x: 0, y: 0 }, OS: { x: 0, y: 0 } };
 
         const canvasRect = canvas.getBoundingClientRect();
@@ -147,20 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function moveDrag(e) {
-        if (!activeTool) return;
+        if (!activeTool || !canvas) return;
 
         if (e.type === 'touchmove') {
             e.preventDefault();
         }
 
         const pos = getEventPos(e);
-        const canvasRect = document.getElementById('canvas').getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
 
         let x = pos.x - canvasRect.left - offset.x;
         let y = pos.y - canvasRect.top - offset.y;
 
-        x = Math.max(0, Math.min(canvasRect.width - activeTool.offsetWidth, x));
-        y = Math.max(0, Math.min(canvasRect.height - activeTool.offsetHeight, y));
+        // Extended boundary to allow tools to move smoothly without snapping
+        x = Math.max(-50, Math.min(canvasRect.width - activeTool.offsetWidth + 50, x));
+        y = Math.max(-50, Math.min(canvasRect.height - activeTool.offsetHeight + 50, y));
 
         activeTool.style.left = x + 'px';
         activeTool.style.top = y + 'px';
@@ -199,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRotatePrism.onclick = function() {
             prismAngle = (prismAngle + 90) % 360;
             prism.style.transform = `rotate(${prismAngle}deg)`;
+            updateEyeMovement();
         };
     }
 
@@ -226,14 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const OD_CENTER = eyeCenters.OD;
         const OS_CENTER = eyeCenters.OS;
 
-        const tX = target.offsetLeft + 14;
-        const tY = target.offsetTop + 14;
+        const tX = target.offsetLeft + (target.offsetWidth / 2);
+        const tY = target.offsetTop + (target.offsetHeight / 2);
 
-        const occX = occluder.offsetLeft + 52;
-        const occY = occluder.offsetTop + 52;
+        const occX = occluder.offsetLeft + (occluder.offsetWidth / 2);
+        const occY = occluder.offsetTop + (occluder.offsetHeight / 2);
 
-        const pX = prism.offsetLeft + 52;
-        const pY = prism.offsetTop + 52;
+        const pX = prism.offsetLeft + (prism.offsetWidth / 2);
+        const pY = prism.offsetTop + (prism.offsetHeight / 2);
 
         const isODCovered = Math.hypot(occX - OD_CENTER.x, occY - OD_CENTER.y) < 70;
         const isOSCovered = Math.hypot(occX - OS_CENTER.x, occY - OS_CENTER.y) < 70;
@@ -272,8 +274,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isOSCovered) { osX += curPhorH * 0.5; osY += curPhorV * 0.5; }
 
         const pPow = parseFloat(prismPower ? prismPower.value : 0) || 0;
-        if (isODPrism) odX -= pPow * 0.4;
-        if (isOSPrism) osX -= pPow * 0.4;
+        
+        // Prism Angle Calculation based on Rotation Angle
+        const rad = (prismAngle * Math.PI) / 180;
+        const prismShiftX = Math.cos(rad) * pPow * 0.4;
+        const prismShiftY = Math.sin(rad) * pPow * 0.4;
+
+        if (isODPrism) {
+            odX -= prismShiftX;
+            odY -= prismShiftY;
+        }
+        if (isOSPrism) {
+            osX -= prismShiftX;
+            osY -= prismShiftY;
+        }
 
         odX = Math.max(-35, Math.min(35, odX));
         odY = Math.max(-10, Math.min(10, odY));
