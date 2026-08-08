@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (s) s.classList.remove('active');
         });
         targetScreen.classList.add('active');
+        if (targetScreen === simulatorScreen) {
+            updateEyeMovement();
+        }
     }
 
     if (btnStartApp) {
@@ -79,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const occluder = document.getElementById('occluderPaddle');
     const prism = document.getElementById('prismGlass');
 
+    const socketOD = document.getElementById('socketOD');
+    const socketOS = document.getElementById('socketOS');
     const irisOD = document.getElementById('irisOD');
     const irisOS = document.getElementById('irisOS');
     const reflexOD = document.getElementById('reflexOD');
@@ -95,16 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRotatePrism = document.getElementById('btnRotatePrism');
     const prismPower = document.getElementById('prismPower');
 
-    // Standalone Eye Coordinates
-    const OD_CENTER = { x: 235, y: 135 };
-    const OS_CENTER = { x: 440, y: 135 };
-
     let isLightOn = false;
     let isLinked = false;
     let activeTool = null;
     let offset = { x: 0, y: 0 };
     let currentEyeMode = 'OD';
     let prismAngle = 0;
+
+    // Dynamic Eye Center Calculation for Fullscreen Responsiveness
+    function getEyeCenters() {
+        const canvas = document.getElementById('canvas');
+        if (!canvas || !socketOD || !socketOS) return { OD: { x: 0, y: 0 }, OS: { x: 0, y: 0 } };
+
+        const canvasRect = canvas.getBoundingClientRect();
+        const odRect = socketOD.getBoundingClientRect();
+        const osRect = socketOS.getBoundingClientRect();
+
+        return {
+            OD: {
+                x: (odRect.left + odRect.width / 2) - canvasRect.left,
+                y: (odRect.top + odRect.height / 2) - canvasRect.top
+            },
+            OS: {
+                x: (osRect.left + osRect.width / 2) - canvasRect.left,
+                y: (osRect.top + osRect.height / 2) - canvasRect.top
+            }
+        };
+    }
 
     // Drag Coordinates for Mobile Touch & Mouse
     function getEventPos(e) {
@@ -200,20 +222,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateEyeMovement() {
         if (!target || !occluder || !prism || !irisOD || !irisOS) return;
 
-        const tX = target.offsetLeft + 13;
-        const tY = target.offsetTop + 13;
+        const eyeCenters = getEyeCenters();
+        const OD_CENTER = eyeCenters.OD;
+        const OS_CENTER = eyeCenters.OS;
 
-        const occX = occluder.offsetLeft + 47;
-        const occY = occluder.offsetTop + 47;
+        const tX = target.offsetLeft + 14;
+        const tY = target.offsetTop + 14;
 
-        const pX = prism.offsetLeft + 47;
-        const pY = prism.offsetTop + 47;
+        const occX = occluder.offsetLeft + 52;
+        const occY = occluder.offsetTop + 52;
 
-        const isODCovered = Math.hypot(occX - OD_CENTER.x, occY - OD_CENTER.y) < 65;
-        const isOSCovered = Math.hypot(occX - OS_CENTER.x, occY - OS_CENTER.y) < 65;
+        const pX = prism.offsetLeft + 52;
+        const pY = prism.offsetTop + 52;
 
-        const isODPrism = Math.hypot(pX - OD_CENTER.x, pY - OD_CENTER.y) < 65;
-        const isOSPrism = Math.hypot(pX - OS_CENTER.x, pY - OS_CENTER.y) < 65;
+        const isODCovered = Math.hypot(occX - OD_CENTER.x, occY - OD_CENTER.y) < 70;
+        const isOSCovered = Math.hypot(occX - OS_CENTER.x, occY - OS_CENTER.y) < 70;
+
+        const isODPrism = Math.hypot(pX - OD_CENTER.x, pY - OD_CENTER.y) < 70;
+        const isOSPrism = Math.hypot(pX - OS_CENTER.x, pY - OS_CENTER.y) < 70;
 
         let odX = (tX - OD_CENTER.x) * 0.1;
         let odY = (tY - OD_CENTER.y) * 0.1;
@@ -249,11 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isODPrism) odX -= pPow * 0.4;
         if (isOSPrism) osX -= pPow * 0.4;
 
-        // Optimized boundaries for realistic Vector 2D eye limits
-        odX = Math.max(-28, Math.min(28, odX));
-        odY = Math.max(-8, Math.min(8, odY));
-        osX = Math.max(-28, Math.min(28, osX));
-        osY = Math.max(-8, Math.min(8, osY));
+        odX = Math.max(-35, Math.min(35, odX));
+        odY = Math.max(-10, Math.min(10, odY));
+        osX = Math.max(-35, Math.min(35, osX));
+        osY = Math.max(-10, Math.min(10, osY));
 
         irisOD.style.transform = `translate(${odX}px, ${odY}px)`;
         irisOS.style.transform = `translate(${osX}px, ${osY}px)`;
@@ -262,6 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
     [tropiaH, tropiaV, phoriaH, phoriaV, prismPower].forEach(inp => {
         if (inp) inp.addEventListener('input', updateEyeMovement);
     });
+
+    window.addEventListener('resize', updateEyeMovement);
 
     // Test Mode Logic
     let currentPatientIdx = 0;
