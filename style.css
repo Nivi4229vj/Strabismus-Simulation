@@ -45,7 +45,7 @@ html, body {
     display: none !important;
 }
 
-/* ================= 1 & 2. ARAVIND BRANDED LANDING (UPDATED: CENTER ALIGNED) ================= */
+/* ================= 1 & 2. ARAVIND BRANDED LANDING (CENTER ALIGNED) ================= */
 .landing-card {
     position: relative;
     width: 100%;
@@ -110,7 +110,7 @@ html, body {
     color: #94D2BD;
 }
 
-/* Acknowledgement White Box - Centered & Medium Auto Size */
+/* Acknowledgement White Box - Centered & Responsive */
 .ack-box {
     background: #ffffff;
     padding: 28px 32px 64px 32px;
@@ -175,7 +175,7 @@ html, body {
     margin-top: auto;
 }
 
-/* ================= MODE SELECTION SCREEN (CENTER ALIGNED) ================= */
+/* ================= MODE SELECTION SCREEN ================= */
 .mode-card {
     justify-content: center;
     align-items: center;
@@ -260,7 +260,7 @@ html, body {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* ================= 3. CLINICAL CANVAS & EYES (MEDIUM RESPONSIVE SCALING) ================= */
+/* ================= 3. CLINICAL CANVAS & EYES ================= */
 .sim-header {
     height: 56px;
     background: #005F73;
@@ -327,7 +327,7 @@ html, body {
     justify-content: center;
 }
 
-/* ================= VECTOR 2D EYE GRAPHICS (MEDIUM SIZE AUTO-SCALE) ================= */
+/* ================= VECTOR 2D EYE GRAPHICS ================= */
 .eye-socket {
     position: relative;
     width: clamp(120px, 12vw, 150px);
@@ -409,7 +409,7 @@ html, body {
     box-shadow: 0 0 3px #ffffff;
 }
 
-/* Draggable Clinical Tools (Medium Balanced Sizes) */
+/* Draggable Clinical Tools */
 .drag-tool {
     position: absolute;
     z-index: 10;
@@ -418,7 +418,9 @@ html, body {
     touch-action: none;
 }
 
-.drag-tool:active { cursor: grabbing; }
+.drag-tool:active { 
+    cursor: grabbing; 
+}
 
 .target-tool {
     width: clamp(24px, 2vw, 30px);
@@ -461,28 +463,33 @@ html, body {
     filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
 }
 
+/* Prism Tool Container */
 .prism-tool {
-    width: clamp(90px, 8vw, 110px);
-    height: clamp(90px, 8vw, 110px);
-    background: linear-gradient(135deg, rgba(233, 216, 166, 0.6), rgba(148, 210, 189, 0.5));
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-right: 4px solid #EE9B00;
-    border-radius: 12px;
-    backdrop-filter: blur(3px);
+    width: clamp(80px, 7vw, 100px);
+    height: auto;
+    position: absolute;
+    z-index: 10;
+    cursor: grab;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    align-items: center;
 }
 
-.prism-label {
-    font-size: 11px;
-    font-weight: 800;
-    color: #005F73;
-    opacity: 0.8;
+/* Prism PNG Image Style */
+.prism-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
 
-/* Bottom Dock Control Panel (Balanced Layout) */
+/* Bottom Dock Control Panel */
 .bottom-bar {
     min-height: 110px;
     width: 100%;
@@ -539,7 +546,10 @@ html, body {
     font-size: 13px;
 }
 
-.matrix-row label { width: 55px; color: #E9D8A6; }
+.matrix-row label { 
+    width: 55px; 
+    color: #E9D8A6; 
+}
 
 .matrix-row input[type="number"] {
     width: 55px;
@@ -586,7 +596,9 @@ html, body {
     font-size: 12px;
 }
 
-.mini-select.wide { width: 130px; }
+.mini-select.wide { 
+    width: 130px; 
+}
 
 .eval-footer {
     display: flex;
@@ -698,9 +710,24 @@ html, body {
     color: #005F73;
 }
 
-.modal-content h2 { font-size: 20px; color: #005F73; margin-bottom: 14px; }
-.modal-content p { font-size: 14px; color: #475569; margin-bottom: 12px; }
-.modal-content ul { margin-left: 20px; font-size: 14px; color: #334155; margin-bottom: 20px; }
+.modal-content h2 { 
+    font-size: 20px; 
+    color: #005F73; 
+    margin-bottom: 14px; 
+}
+
+.modal-content p { 
+    font-size: 14px; 
+    color: #475569; 
+    margin-bottom: 12px; 
+}
+
+.modal-content ul { 
+    margin-left: 20px; 
+    font-size: 14px; 
+    color: #334155; 
+    margin-bottom: 20px; 
+}
 
 .btn-primary {
     background: #005F73;
@@ -735,7 +762,10 @@ html, body {
     pointer-events: auto;
 }
 
-#tutorialText { font-size: 13px; line-height: 1.5; }
+#tutorialText { 
+    font-size: 13px; 
+    line-height: 1.5; 
+}
 
 .tutorial-footer {
     display: flex;
