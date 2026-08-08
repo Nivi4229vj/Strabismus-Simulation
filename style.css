@@ -270,7 +270,8 @@ html, body {
     justify-content: space-between;
     padding: 0 24px;
     width: 100%;
-    z-index: 10;
+    z-index: 50;
+    position: relative;
 }
 
 .header-left {
@@ -309,7 +310,7 @@ html, body {
     width: 100%;
     flex: 1;
     background: #f0fdfa;
-    overflow: hidden;
+    overflow: visible !important; /* Box clipping-ஐ தடுக்க visible ஆக்கப்பட்டது */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,7 +318,7 @@ html, body {
 
 .eyes-container {
     position: absolute;
-    top: 45%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -325,6 +326,7 @@ html, body {
     pointer-events: none;
     align-items: center;
     justify-content: center;
+    z-index: 5;
 }
 
 /* ================= VECTOR 2D EYE GRAPHICS ================= */
@@ -409,10 +411,10 @@ html, body {
     box-shadow: 0 0 3px #ffffff;
 }
 
-/* Draggable Clinical Tools */
+/* Draggable Clinical Tools - z-index உயர்த்தி முழுமையாக நகரும்படி செய்யப்பட்டுள்ளது */
 .drag-tool {
     position: absolute;
-    z-index: 10;
+    z-index: 100;
     cursor: grab;
     user-select: none;
     touch-action: none;
@@ -451,7 +453,7 @@ html, body {
     width: 100px;
     height: auto;
     position: absolute;
-    z-index: 10;
+    z-index: 100;
     cursor: grab;
 }
 
@@ -468,7 +470,7 @@ html, body {
     width: clamp(80px, 7vw, 100px);
     height: auto;
     position: absolute;
-    z-index: 10;
+    z-index: 100;
     cursor: grab;
     background: transparent;
     border: none;
@@ -501,6 +503,8 @@ html, body {
     gap: 16px;
     color: #ffffff;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 40;
 }
 
 .eye-toggle-btn {
@@ -683,7 +687,7 @@ html, body {
     position: absolute;
     inset: 0;
     background: rgba(0, 18, 25, 0.85);
-    z-index: 100;
+    z-index: 200;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -742,7 +746,7 @@ html, body {
 .tutorial-overlay {
     position: absolute;
     inset: 0;
-    z-index: 90;
+    z-index: 150;
     pointer-events: none;
 }
 
