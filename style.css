@@ -14,6 +14,7 @@ html, body {
     overflow: hidden;
     background: #001219;
     color: #0f172a;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Full Screen Simulator Container */
@@ -51,7 +52,7 @@ html, body {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #005F73 0%, #0A9396 100%);
-    padding: 40px clamp(20px, 5vw, 60px);
+    padding: clamp(20px, 4vh, 40px) clamp(16px, 5vw, 60px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,7 +60,8 @@ html, body {
     text-align: center;
     color: #ffffff;
     box-sizing: border-box;
-    gap: 24px;
+    gap: clamp(16px, 3vh, 24px);
+    overflow-y: auto;
 }
 
 .hospital-badge {
@@ -71,7 +73,7 @@ html, body {
     backdrop-filter: blur(8px);
     padding: 8px 18px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: clamp(11px, 1.2vw, 13px);
     letter-spacing: 1px;
     font-weight: 800;
     width: fit-content;
@@ -92,7 +94,7 @@ html, body {
 }
 
 .main-title {
-    font-size: clamp(32px, 4.5vw, 54px);
+    font-size: clamp(26px, 4.5vw, 54px);
     font-weight: 800;
     line-height: 1.2;
     color: #ffffff;
@@ -103,7 +105,7 @@ html, body {
 }
 
 .sub-title {
-    font-size: clamp(14px, 1.5vw, 18px);
+    font-size: clamp(13px, 1.5vw, 18px);
     opacity: 0.9;
     margin-top: 10px;
     font-weight: 500;
@@ -113,10 +115,10 @@ html, body {
 /* Acknowledgement White Box - Centered & Responsive */
 .ack-box {
     background: #ffffff;
-    padding: 28px 32px 64px 32px;
+    padding: clamp(20px, 3vh, 28px) clamp(20px, 3vw, 32px) clamp(50px, 7vh, 64px) clamp(20px, 3vw, 32px);
     border-radius: 18px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    width: 90%;
+    width: 100%;
     max-width: 580px;
     position: relative;
     color: #001219;
@@ -135,7 +137,7 @@ html, body {
 }
 
 .ack-text {
-    font-size: 14px;
+    font-size: clamp(12px, 1.3vw, 14px);
     color: #2b2d42;
     line-height: 1.5;
     font-weight: 500;
@@ -185,30 +187,30 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    width: 90%;
+    width: 100%;
     max-width: 580px;
     margin: 10px auto;
 }
 
 .mode-select-btn {
     border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: 20px 24px;
+    padding: clamp(14px, 2vh, 20px) clamp(16px, 2vw, 24px);
     border-radius: 16px;
     text-align: left;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     transition: all 0.2s ease;
     width: 100%;
 }
 
 .mode-icon {
-    font-size: 30px;
+    font-size: 26px;
     background: rgba(255, 255, 255, 0.2);
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,19 +228,19 @@ html, body {
 }
 
 .mode-select-btn h3 {
-    font-size: 18px;
+    font-size: clamp(15px, 1.8vw, 18px);
     font-weight: 700;
     margin-bottom: 4px;
 }
 
 .mode-select-btn p {
-    font-size: 13px;
+    font-size: clamp(12px, 1.2vw, 13px);
     opacity: 0.85;
     font-weight: 500;
 }
 
 .mode-select-btn:hover {
-    transform: translateX(8px);
+    transform: translateX(6px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
@@ -268,7 +270,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 0 clamp(12px, 3vw, 24px);
     width: 100%;
     z-index: 50;
     position: relative;
@@ -296,10 +298,13 @@ html, body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mode-indicator {
-    font-size: 15px;
+    font-size: clamp(12px, 1.5vw, 15px);
     font-weight: 700;
     color: #94D2BD;
 }
@@ -310,7 +315,7 @@ html, body {
     width: 100%;
     flex: 1;
     background: #f0fdfa;
-    overflow: visible !important; /* Box clipping-ஐ தடுக்க visible ஆக்கப்பட்டது */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -318,11 +323,11 @@ html, body {
 
 .eyes-container {
     position: absolute;
-    top: 42%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: clamp(60px, 10vw, 130px);
+    gap: clamp(40px, 8vw, 130px);
     pointer-events: none;
     align-items: center;
     justify-content: center;
@@ -332,8 +337,8 @@ html, body {
 /* ================= VECTOR 2D EYE GRAPHICS ================= */
 .eye-socket {
     position: relative;
-    width: clamp(120px, 12vw, 150px);
-    height: clamp(60px, 6vw, 75px);
+    width: clamp(100px, 12vw, 150px);
+    height: clamp(50px, 6vw, 75px);
     border-radius: 50%;
     background: linear-gradient(180deg, #b2c2d4 0%, #ffffff 20%, #ffffff 80%, #b2c2d4 100%);
     border: 3px solid #0a101d;
@@ -346,14 +351,14 @@ html, body {
 
 .eye-label-tag {
     position: absolute;
-    top: -30px;
+    top: -28px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
     color: #005F73;
     background: #e0f2fe;
-    padding: 3px 10px;
+    padding: 2px 8px;
     border-radius: 6px;
     z-index: 5;
     white-space: nowrap;
@@ -361,8 +366,8 @@ html, body {
 
 /* Blue Vector Iris */
 .iris-element {
-    width: clamp(42px, 4.2vw, 54px);
-    height: clamp(42px, 4.2vw, 54px);
+    width: clamp(36px, 4.2vw, 54px);
+    height: clamp(36px, 4.2vw, 54px);
     border-radius: 50%;
     position: relative;
     transition: transform 0.04s ease-out;
@@ -392,8 +397,8 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(14px, 1.4vw, 18px);
-    height: clamp(14px, 1.4vw, 18px);
+    width: clamp(12px, 1.4vw, 18px);
+    height: clamp(12px, 1.4vw, 18px);
     background-color: #000000;
     border-radius: 50%;
     z-index: 2;
@@ -401,8 +406,8 @@ html, body {
 
 .light-reflex {
     position: absolute;
-    top: 10px;
-    left: 12px;
+    top: 22%;
+    left: 25%;
     width: 6px;
     height: 6px;
     background-color: #ffffff;
@@ -411,7 +416,7 @@ html, body {
     box-shadow: 0 0 3px #ffffff;
 }
 
-/* Draggable Clinical Tools - z-index உயர்த்தி முழுமையாக நகரும்படி செய்யப்பட்டுள்ளது */
+/* Draggable Clinical Tools */
 .drag-tool {
     position: absolute;
     z-index: 100;
@@ -426,7 +431,7 @@ html, body {
 
 .target-tool {
     width: clamp(24px, 2vw, 30px);
-    height: clamp(140px, 12vh, 170px);
+    height: clamp(110px, 12vh, 170px);
     background: #ffffff;
     border: 2px solid #005F73;
     border-radius: 12px;
@@ -434,6 +439,8 @@ html, body {
     justify-content: center;
     padding-top: 8px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    left: 15px;
+    top: 15px;
 }
 
 .target-cross {
@@ -450,11 +457,10 @@ html, body {
 }
 
 .occluder-tool {
-    width: 100px;
+    width: clamp(75px, 8vw, 100px);
     height: auto;
-    position: absolute;
-    z-index: 100;
-    cursor: grab;
+    left: 60px;
+    top: 15px;
 }
 
 .occluder-img {
@@ -467,21 +473,15 @@ html, body {
 
 /* Prism Tool Container */
 .prism-tool {
-    width: clamp(80px, 7vw, 100px);
+    width: clamp(70px, 7vw, 100px);
     height: auto;
-    position: absolute;
-    z-index: 100;
-    cursor: grab;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
+    left: 150px;
+    top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Prism PNG Image Style */
 .prism-img {
     width: 100%;
     height: auto;
@@ -493,29 +493,30 @@ html, body {
 
 /* Bottom Dock Control Panel */
 .bottom-bar {
-    min-height: 110px;
+    min-height: 90px;
     width: 100%;
     background: #001219;
-    padding: 12px clamp(16px, 3vw, 36px);
+    padding: 10px clamp(12px, 3vw, 36px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
     color: #ffffff;
-    flex-wrap: wrap;
     position: relative;
     z-index: 40;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
 }
 
 .eye-toggle-btn {
     border: 1px solid #0A9396;
     background: #005F73;
     color: #ffffff;
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .eye-toggle-btn.active {
@@ -527,9 +528,9 @@ html, body {
 .input-matrix {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     background: rgba(255,255,255,0.05);
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.1);
 }
@@ -537,71 +538,73 @@ html, body {
 .matrix-header {
     display: flex;
     justify-content: flex-end;
-    gap: 24px;
-    font-size: 11px;
+    gap: 16px;
+    font-size: 10px;
     color: #94D2BD;
-    padding-right: 8px;
+    padding-right: 4px;
 }
 
 .matrix-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 13px;
+    gap: 8px;
+    font-size: 12px;
 }
 
 .matrix-row label { 
-    width: 55px; 
+    width: 48px; 
     color: #E9D8A6; 
 }
 
 .matrix-row input[type="number"] {
-    width: 55px;
-    padding: 5px;
+    width: 48px;
+    padding: 4px;
     border-radius: 6px;
     border: 1px solid #0A9396;
     text-align: center;
     background: #005F73;
     color: #ffffff;
     font-weight: 700;
+    font-size: 12px;
 }
 
 /* Test Mode Panel */
 .test-eval-box {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     background: rgba(255,255,255,0.05);
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 12px;
 }
 
 .eval-row {
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
 .mini-num {
-    width: 48px;
-    padding: 6px;
+    width: 44px;
+    padding: 5px;
     border-radius: 6px;
     border: none;
     background: #005F73;
     color: #fff;
     text-align: center;
+    font-size: 12px;
 }
 
 .mini-select {
-    padding: 6px;
+    padding: 5px;
     border-radius: 6px;
     border: none;
     background: #005F73;
     color: #fff;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .mini-select.wide { 
-    width: 130px; 
+    width: 110px; 
 }
 
 .eval-footer {
@@ -611,7 +614,7 @@ html, body {
 }
 
 .patient-badge {
-    font-size: 12px;
+    font-size: 11px;
     color: #E9D8A6;
 }
 
@@ -619,29 +622,32 @@ html, body {
     background: #CA6702;
     border: none;
     color: #ffffff;
-    padding: 6px 16px;
+    padding: 5px 12px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 /* Actions Bar */
 .action-toolbar {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .tool-btn {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border: 1px solid rgba(255,255,255,0.15);
     background: #005F73;
     color: #fff;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tool-btn.active {
@@ -653,25 +659,25 @@ html, body {
     flex-direction: column;
     align-items: center;
     background: rgba(255,255,255,0.05);
-    padding: 6px 12px;
+    padding: 4px 8px;
     border-radius: 10px;
     gap: 2px;
 }
 
 .unit-tag {
-    font-size: 9px;
+    font-size: 8px;
     color: #94D2BD;
     text-transform: uppercase;
 }
 
 .prism-control-box input {
-    width: 45px;
+    width: 40px;
     border: none;
     background: transparent;
     color: #fff;
     text-align: center;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .rotate-btn {
@@ -679,7 +685,7 @@ html, body {
     background: transparent;
     color: #E9D8A6;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* Modals & Tutorials */
@@ -691,13 +697,14 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px;
 }
 
 .modal-content {
     background: #ffffff;
-    width: 90%;
+    width: 100%;
     max-width: 500px;
-    padding: 30px;
+    padding: clamp(20px, 3vw, 30px);
     border-radius: 20px;
     position: relative;
     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
@@ -705,7 +712,7 @@ html, body {
 
 .close-modal-btn {
     position: absolute;
-    top: 18px;
+    top: 14px;
     right: 18px;
     border: none;
     background: transparent;
@@ -715,32 +722,33 @@ html, body {
 }
 
 .modal-content h2 { 
-    font-size: 20px; 
+    font-size: clamp(18px, 2vw, 20px); 
     color: #005F73; 
-    margin-bottom: 14px; 
+    margin-bottom: 12px; 
 }
 
 .modal-content p { 
-    font-size: 14px; 
+    font-size: clamp(13px, 1.3vw, 14px); 
     color: #475569; 
-    margin-bottom: 12px; 
+    margin-bottom: 10px; 
 }
 
 .modal-content ul { 
     margin-left: 20px; 
-    font-size: 14px; 
+    font-size: clamp(12px, 1.2vw, 14px); 
     color: #334155; 
-    margin-bottom: 20px; 
+    margin-bottom: 18px; 
 }
 
 .btn-primary {
     background: #005F73;
     color: #ffffff;
     border: none;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 13px;
 }
 
 .tutorial-overlay {
@@ -752,14 +760,14 @@ html, body {
 
 .tutorial-box {
     position: absolute;
-    bottom: 135px;
+    bottom: 110px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 380px;
     background: #001219;
     color: #ffffff;
-    padding: 18px 22px;
+    padding: 16px 20px;
     border-radius: 14px;
     border: 1px solid #0A9396;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -774,16 +782,51 @@ html, body {
 .tutorial-footer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 .btn-next {
     background: #EE9B00;
     color: #001219;
     border: none;
-    padding: 6px 16px;
+    padding: 6px 14px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
+}
+
+/* ================= MEDIA QUERIES (TABLETS & MOBILES) ================= */
+@media screen and (max-width: 768px) {
+    .bottom-bar {
+        justify-content: center;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .eye-toggle-btn {
+        order: 1;
+    }
+
+    .action-toolbar {
+        order: 2;
+    }
+
+    .panel-section {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ack-badge-corner {
+        bottom: 12px;
+        right: 16px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .tutorial-box {
+        bottom: 150px;
+    }
 }
