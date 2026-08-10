@@ -802,31 +802,54 @@ html, body {
 
 /* ================= MEDIA QUERIES (TABLETS & PORTRAIT MOBILES) ================= */
 @media screen and (max-width: 768px) {
+    /* Eyes position is lifted higher and scaled for mobile screens */
     .eyes-container {
-        top: 32%; /* Eye-ai innum konjam mela lift pannuvom */
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(0.82);
     }
 
+    /* Scaling tools for compact screens */
+    .target-tool {
+        height: 80px;
+    }
+
+    /* Bottom Bar Mobile Layout Fix */
     .bottom-bar {
-        flex-wrap: wrap;
-        justify-content: space-around;
-        padding: 6px 10px;
-        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 8px 10px;
+        max-height: 45vh; /* Sets a clear boundary for the bottom dock */
+        overflow-y: auto;  /* Allows scrolling if elements exceed height */
+        gap: 8px;
     }
 
-    .eye-toggle-btn {
-        order: 1;
+    .bottom-bar > * {
+        width: 100%;
+        justify-content: center;
     }
 
     .action-toolbar {
-        order: 2;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .panel-section {
-        order: 3;
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 4px;
+        margin-top: 2px;
+    }
+
+    .input-matrix, .test-eval-box {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .matrix-row input[type="number"], .mini-num {
+        width: 38px;
+        padding: 3px;
+        font-size: 11px;
     }
 
     .ack-badge-corner {
@@ -837,6 +860,24 @@ html, body {
     }
 
     .tutorial-box {
-        bottom: 135px;
+        bottom: 120px;
+        width: 95%;
+    }
+}
+
+/* Small mobile devices breakpoint */
+@media screen and (max-width: 480px) {
+    .eyes-container {
+        top: 25% !important;
+        transform: translate(-50%, -50%) scale(0.72);
+    }
+    
+    .eye-socket {
+        width: 100px;
+        height: 50px;
+    }
+
+    .bottom-bar {
+        padding: 6px 8px;
     }
 }
