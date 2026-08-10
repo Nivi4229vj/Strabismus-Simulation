@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aravind Eye Care System - Strabismus Simulator</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -11,7 +11,6 @@
 
     <div class="simulator-app">
 
-        <!-- ================= 1. START / LANDING SCREEN ================= -->
         <div class="screen active" id="startScreen">
             <div class="landing-card">
                 <div class="hospital-badge">
@@ -35,7 +34,6 @@
             </div>
         </div>
 
-        <!-- ================= 2. MODE SELECTION SCREEN ================= -->
         <div class="screen" id="modeScreen">
             <div class="landing-card mode-card">
                 <div class="hospital-badge">
@@ -65,10 +63,8 @@
             </div>
         </div>
 
-        <!-- ================= 3. MAIN SIMULATOR SCREEN ================= -->
         <div class="screen" id="simulatorScreen">
             
-            <!-- Top Header Controls -->
             <div class="sim-header">
                 <div class="header-left">
                     <button class="icon-btn" id="btnHome" title="Main Menu">🏠</button>
@@ -78,10 +74,8 @@
                 <button class="icon-btn help-btn" id="btnHelp" title="Clinical Guide">?</button>
             </div>
 
-            <!-- Standalone Eyes Canvas Arena -->
             <div class="face-canvas" id="canvas">
                 <div class="eyes-container">
-                    <!-- Right Eye (OD) -->
                     <div class="eye-socket" id="socketOD">
                         <span class="eye-label-tag">OD (Right)</span>
                         <div class="iris-element" id="irisOD">
@@ -90,7 +84,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Left Eye (OS) -->
                     <div class="eye-socket" id="socketOS">
                         <span class="eye-label-tag">OS (Left)</span>
                         <div class="iris-element" id="irisOS">
@@ -101,25 +94,22 @@
                     </div>
                 </div>
 
-                <!-- Clinical Draggable Tools -->
                 <div class="drag-tool target-tool" id="fixationTarget" title="Fixation Target">
                     <div class="target-cross">+</div>
                 </div>
 
                 <div class="drag-tool occluder-tool" id="occluderPaddle" title="Occluder Paddle">
-                    <img src="occluder.png" alt="occluder" class="occluder-img">
+                    <img src="occluder.png" alt="occluder" class="occluder-img" draggable="false">
                 </div>
 
                 <div class="drag-tool prism-tool" id="prismGlass" title="Prism Bar">
-                    <img src="prism.png" alt="prism" class="prism-img">
+                    <img src="prism.png" alt="prism" class="prism-img" draggable="false">
                 </div>
             </div>
 
-            <!-- Bottom Dock Control Panel -->
             <div class="bottom-bar">
                 <button class="eye-toggle-btn active" id="btnOD">Fixing Eye: OD</button>
 
-                <!-- Explore Mode Inputs Panel -->
                 <div class="panel-section" id="exploreControls">
                     <div class="input-matrix">
                         <div class="matrix-header">
@@ -139,7 +129,6 @@
                     </div>
                 </div>
 
-                <!-- Test Mode Diagnosis Panel -->
                 <div class="panel-section hidden" id="testControls">
                     <div class="test-eval-box">
                         <div class="eval-row">
@@ -166,7 +155,6 @@
                     </div>
                 </div>
 
-                <!-- Shared Action Tools -->
                 <div class="action-toolbar">
                     <button class="tool-btn" id="btnPenlight" title="Penlight Reflex">🔦</button>
                     <button class="tool-btn" id="btnLinkTools" title="Link Occluder + Prism">🔗</button>
@@ -181,7 +169,6 @@
 
         </div>
 
-        <!-- ================= 4. CLINICAL GUIDE MODAL ================= -->
         <div class="modal-overlay hidden" id="instructionModal">
             <div class="modal-content">
                 <button class="close-modal-btn" id="btnCloseModal">×</button>
@@ -198,7 +185,6 @@
             </div>
         </div>
 
-        <!-- ================= 5. ONBOARDING TUTORIAL ================= -->
         <div class="tutorial-overlay hidden" id="tutorialOverlay">
             <div class="tutorial-box" id="tutorialBox">
                 <p id="tutorialText">Welcome to the Aravind Strabismus Simulator.</p>
