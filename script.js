@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         targetScreen.classList.add('active');
         if (targetScreen === simulatorScreen) {
-            setTimeout(updateEyeMovement, 50); // Canvas layout update-க்கான சிறிய தாமதம்
+            setTimeout(updateEyeMovement, 100); // Canvas render-க்காக சிறிய தாமதம்
         }
     }
 
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Drag Coordinates for Mobile Touch & Mouse
+    // Touch & Mouse Drag Position Detection
     function getEventPos(e) {
         if (e.touches && e.touches.length > 0) {
             return { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!activeTool || !canvas) return;
 
         if (e.type === 'touchmove') {
-            e.preventDefault();
+            e.preventDefault(); // Tablet Scrolling-ஐ தடுக்க
         }
 
         const pos = getEventPos(e);
@@ -159,15 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let x = pos.x - canvasRect.left - offset.x;
         let y = pos.y - canvasRect.top - offset.y;
 
-        // Extended boundary to allow tools to move smoothly without snapping
-        x = Math.max(-50, Math.min(canvasRect.width - activeTool.offsetWidth + 50, x));
-        y = Math.max(-50, Math.min(canvasRect.height - activeTool.offsetHeight + 50, y));
+        // Smooth Boundary Constraints
+        x = Math.max(-30, Math.min(canvasRect.width - activeTool.offsetWidth + 30, x));
+        y = Math.max(-30, Math.min(canvasRect.height - activeTool.offsetHeight + 30, y));
 
         activeTool.style.left = x + 'px';
         activeTool.style.top = y + 'px';
 
         if (isLinked && activeTool === occluder && prism) {
-            prism.style.left = (x + 110) + 'px';
+            prism.style.left = (x + 100) + 'px';
             prism.style.top = y + 'px';
         }
 
@@ -237,16 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const pX = prism.offsetLeft + (prism.offsetWidth / 2);
         const pY = prism.offsetTop + (prism.offsetHeight / 2);
 
-        const isODCovered = Math.hypot(occX - OD_CENTER.x, occY - OD_CENTER.y) < 70;
-        const isOSCovered = Math.hypot(occX - OS_CENTER.x, occY - OS_CENTER.y) < 70;
+        const isODCovered = Math.hypot(occX - OD_CENTER.x, occY - OD_CENTER.y) < 65;
+        const isOSCovered = Math.hypot(occX - OS_CENTER.x, occY - OS_CENTER.y) < 65;
 
-        const isODPrism = Math.hypot(pX - OD_CENTER.x, pY - OD_CENTER.y) < 70;
-        const isOSPrism = Math.hypot(pX - OS_CENTER.x, pY - OS_CENTER.y) < 70;
+        const isODPrism = Math.hypot(pX - OD_CENTER.x, pY - OD_CENTER.y) < 65;
+        const isOSPrism = Math.hypot(pX - OS_CENTER.x, pY - OS_CENTER.y) < 65;
 
-        let odX = (tX - OD_CENTER.x) * 0.1;
-        let odY = (tY - OD_CENTER.y) * 0.1;
-        let osX = (tX - OS_CENTER.x) * 0.1;
-        let osY = (tY - OS_CENTER.y) * 0.1;
+        let odX = (tX - OD_CENTER.x) * 0.08;
+        let odY = (tY - OD_CENTER.y) * 0.08;
+        let osX = (tX - OS_CENTER.x) * 0.08;
+        let osY = (tY - OS_CENTER.y) * 0.08;
 
         let curTropH = 0, curTropV = 0, curPhorH = 0, curPhorV = 0;
 
@@ -263,22 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (currentEyeMode === 'OD') {
-            osX += curTropH * 0.5;
-            osY += curTropV * 0.5;
+            osX += curTropH * 0.4;
+            osY += curTropV * 0.4;
         } else {
-            odX += curTropH * 0.5;
-            odY += curTropV * 0.5;
+            odX += curTropH * 0.4;
+            odY += curTropV * 0.4;
         }
 
-        if (isODCovered) { odX += curPhorH * 0.5; odY += curPhorV * 0.5; }
-        if (isOSCovered) { osX += curPhorH * 0.5; osY += curPhorV * 0.5; }
+        if (isODCovered) { odX += curPhorH * 0.4; odY += curPhorV * 0.4; }
+        if (isOSCovered) { osX += curPhorH * 0.4; osY += curPhorV * 0.4; }
 
         const pPow = parseFloat(prismPower ? prismPower.value : 0) || 0;
         
         // Prism Angle Calculation based on Rotation Angle
         const rad = (prismAngle * Math.PI) / 180;
-        const prismShiftX = Math.cos(rad) * pPow * 0.4;
-        const prismShiftY = Math.sin(rad) * pPow * 0.4;
+        const prismShiftX = Math.cos(rad) * pPow * 0.35;
+        const prismShiftY = Math.sin(rad) * pPow * 0.35;
 
         if (isODPrism) {
             odX -= prismShiftX;
@@ -289,9 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
             osY -= prismShiftY;
         }
 
-        odX = Math.max(-35, Math.min(35, odX));
+        odX = Math.max(-30, Math.min(30, odX));
         odY = Math.max(-10, Math.min(10, odY));
-        osX = Math.max(-35, Math.min(35, osX));
+        osX = Math.max(-30, Math.min(30, osX));
         osY = Math.max(-10, Math.min(10, osY));
 
         irisOD.style.transform = `translate(${odX}px, ${odY}px)`;
@@ -302,7 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (inp) inp.addEventListener('input', updateEyeMovement);
     });
 
-    window.addEventListener('resize', updateEyeMovement);
+    // Screen Resize & Rotation listeners for Tablets/Mobiles
+    window.addEventListener('resize', () => setTimeout(updateEyeMovement, 100));
+    window.addEventListener('orientationchange', () => setTimeout(updateEyeMovement, 200));
 
     // Test Mode Logic
     let currentPatientIdx = 0;
