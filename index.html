@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-            <!-- RESTRUCTURED BOTTOM BAR (Fixing Eye -> Tropia/Phoria -> Light/Link -> Prism) -->
+            <!-- RESTRUCTURED BOTTOM BAR -->
             <div class="bottom-bar">
                 
                 <!-- 1. Fixing Eye Button -->
@@ -136,29 +136,55 @@
                     </div>
                 </div>
 
-                <!-- Test Mode Panel (If Active) -->
+                <!-- UPDATED: Test Mode Panel with Both Right and Left Rows -->
                 <div class="panel-section hidden" id="testControls">
-                    <div class="test-eval-box">
-                        <div class="eval-row">
-                            <input type="number" id="ansPrimaryMag" value="0" class="mini-num" placeholder="Δ">
-                            <select id="ansPrimaryEye" class="mini-select">
-                                <option value="N/A">Eye</option>
-                                <option value="Right">Right (OD)</option>
-                                <option value="Left">Left (OS)</option>
-                            </select>
-                            <select id="ansPrimaryCond" class="mini-select wide">
-                                <option value="N/A">Condition</option>
-                                <option value="Esotropia">Esotropia</option>
-                                <option value="Exotropia">Exotropia</option>
-                                <option value="Hypertropia">Hypertropia</option>
-                                <option value="Hypotropia">Hypotropia</option>
-                                <option value="Esophoria">Esophoria</option>
-                                <option value="Exophoria">Exophoria</option>
-                            </select>
+                    <div class="test-eval-box" style="display: flex; gap: 10px; align-items: center;">
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <!-- Row 1: Left / Primary Eye -->
+                            <div class="eval-row" style="display: flex; gap: 6px; align-items: center;">
+                                <input type="number" id="ansLeftMag" value="0" class="mini-num" placeholder="Δ" style="width: 45px;">
+                                <select id="ansLeftEye" class="mini-select">
+                                    <option value="Left">Left</option>
+                                    <option value="Right">Right</option>
+                                </select>
+                                <select id="ansLeftCond" class="mini-select wide">
+                                    <option value="None">None</option>
+                                    <option value="Exotropia">Exotropia</option>
+                                    <option value="Esotropia">Esotropia</option>
+                                    <option value="Hypertropia">Hypertropia</option>
+                                    <option value="Hypotropia">Hypotropia</option>
+                                    <option value="Exophoria">Exophoria</option>
+                                    <option value="Esophoria">Esophoria</option>
+                                    <option value="Hyperphoria">Hyperphoria</option>
+                                    <option value="Hypophoria">Hypophoria</option>
+                                </select>
+                            </div>
+
+                            <!-- Row 2: Right / Secondary Eye -->
+                            <div class="eval-row" style="display: flex; gap: 6px; align-items: center;">
+                                <input type="number" id="ansRightMag" value="0" class="mini-num" placeholder="Δ" style="width: 45px;">
+                                <select id="ansRightEye" class="mini-select">
+                                    <option value="Right">Right</option>
+                                    <option value="Left">Left</option>
+                                </select>
+                                <select id="ansRightCond" class="mini-select wide">
+                                    <option value="None">None</option>
+                                    <option value="Exotropia">Exotropia</option>
+                                    <option value="Esotropia">Esotropia</option>
+                                    <option value="Hypertropia">Hypertropia</option>
+                                    <option value="Hypotropia">Hypotropia</option>
+                                    <option value="Exophoria">Exophoria</option>
+                                    <option value="Esophoria">Esophoria</option>
+                                    <option value="Hyperphoria">Hyperphoria</option>
+                                    <option value="Hypophoria">Hypophoria</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="eval-footer">
-                            <span id="patientCounter" class="patient-badge">Patient 1/3</span>
-                            <button class="btn-submit" id="btnSubmitTest">Diagnose Case</button>
+
+                        <!-- Action & Counter Section -->
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+                            <span id="patientCounter" class="patient-badge" style="font-weight: bold; font-size: 13px;">1 of 3</span>
+                            <button class="btn-submit" id="btnSubmitTest" style="padding: 6px 12px; background: #808080; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
                         </div>
                     </div>
                 </div>
