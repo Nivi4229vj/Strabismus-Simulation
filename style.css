@@ -340,8 +340,8 @@ html, body {
 /* ================= VECTOR 2D EYE GRAPHICS ================= */
 .eye-socket {
     position: relative;
-    width: clamp(90px, 12vw, 150px);
-    height: clamp(45px, 6vw, 75px);
+    width: clamp(120px, 16vw, 190px);
+    height: clamp(65px, 8.5vw, 100px);
     border-radius: 50%;
     background: linear-gradient(180deg, #b2c2d4 0%, #ffffff 20%, #ffffff 80%, #b2c2d4 100%);
     border: 3px solid #0a101d;
@@ -369,11 +369,11 @@ html, body {
 
 /* Blue Vector Iris */
 .iris-element {
-    width: clamp(32px, 4.2vw, 54px);
-    height: clamp(32px, 4.2vw, 54px);
+    width: clamp(45px, 6vw, 70px);
+    height: clamp(45px, 6vw, 70px);
     border-radius: 50%;
     position: relative;
-    transition: transform 0.04s ease-out;
+    transition: transform 0.04s cubic-bezier(0.25, 1, 0.5, 1);
     border: 2px solid #00264d;
     background: radial-gradient(circle, #0066cc 0%, #0052a5 70%, #003366 100%);
     box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
@@ -400,12 +400,12 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(10px, 1.4vw, 18px);
-    height: clamp(10px, 1.4vw, 18px);
+    width: clamp(14px, 2vw, 24px);
+    height: clamp(14px, 2vw, 24px);
     background-color: #000000;
     border-radius: 50%;
     z-index: 2;
-}
+}   
 
 .light-reflex {
     position: absolute;
@@ -432,37 +432,40 @@ html, body {
     cursor: grabbing; 
 }
 
+/* ================= MEDIUM SIZED FIXATION TARGET ================= */
 .target-tool {
-    width: clamp(20px, 2vw, 30px);
-    height: clamp(90px, 10vh, 170px);
+    width: clamp(25px, 5vw, 2px); 
+    height: clamp(200px, 20vh, 200px); 
     background: #ffffff;
-    border: 2px solid #005F73;
-    border-radius: 12px;
+    border: 3px solid #005F73;
+    border-radius: 14px;
     display: flex;
     justify-content: center;
-    padding-top: 8px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    align-items: flex-start;
+    padding-top: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     left: 15px;
     top: 15px;
 }
 
 .target-cross {
-    width: 18px;
-    height: 18px;
+    width: 28px; 
+    height: 28px;
     background: #AE2012;
     border-radius: 50%;
-    color: white;
-    font-size: 12px;
+    color: #ffffff;
+    font-size: 16px; 
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .occluder-tool {
     width: clamp(65px, 8vw, 100px);
     height: auto;
-    left: 60px;
+    left: 80px;
     top: 15px;
 }
 
@@ -478,7 +481,7 @@ html, body {
 .prism-tool {
     width: clamp(60px, 7vw, 100px);
     height: auto;
-    left: 140px;
+    left: 160px;
     top: 15px;
     display: flex;
     justify-content: center;
@@ -494,33 +497,35 @@ html, body {
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
 
-/* Bottom Dock Control Panel */
+/* ================= UPDATED BOTTOM DOCK CONTROL PANEL (CENTERED) ================= */
 .bottom-bar {
-    min-height: 80px;
+    min-height: 90px;
     width: 100%;
     background: #001219;
-    padding: 8px clamp(10px, 2vw, 24px);
+    padding: 12px clamp(16px, 3vw, 36px);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: center; /* எலிமென்ட்கள் அனைத்தையும் மையப்பகுதிக்குக் கொண்டுவரும் */
+    gap: 28px; /* ஒவ்வொரு எலிமென்ட்டிற்கும் இடையே நெருக்கமான சீரான இடைவெளி */
     color: #ffffff;
     position: relative;
     z-index: 40;
     box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 .eye-toggle-btn {
     border: 1px solid #0A9396;
     background: #005F73;
     color: #ffffff;
-    padding: 8px 12px;
-    border-radius: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
     white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
 .eye-toggle-btn.active {
@@ -532,83 +537,91 @@ html, body {
 .input-matrix {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     background: rgba(255,255,255,0.05);
-    padding: 6px 10px;
-    border-radius: 12px;
+    padding: 10px 16px;
+    border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.1);
 }
 
 .matrix-header {
     display: flex;
     justify-content: flex-end;
-    gap: 12px;
-    font-size: 10px;
+    gap: 18px;
+    font-size: 12px;
+    font-weight: 700;
     color: #94D2BD;
-    padding-right: 4px;
+    padding-right: 6px;
 }
 
 .matrix-row {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11px;
+    gap: 10px;
+    font-size: 14px;
 }
 
 .matrix-row label { 
-    width: 42px; 
+    width: 55px; 
     color: #E9D8A6; 
+    font-size: 13px;
 }
 
 .matrix-row input[type="number"] {
-    width: 44px;
+    width: 56px;
+    height: 34px;
     padding: 4px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #0A9396;
     text-align: center;
     background: #005F73;
     color: #ffffff;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 14px;
+    outline: none;
 }
 
 /* Test Mode Panel */
 .test-eval-box {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     background: rgba(255,255,255,0.05);
-    padding: 6px 10px;
-    border-radius: 12px;
+    padding: 10px 16px;
+    border-radius: 14px;
 }
 
 .eval-row {
     display: flex;
-    gap: 6px;
+    gap: 8px;
 }
 
 .mini-num {
-    width: 40px;
+    width: 52px;
+    height: 32px;
     padding: 4px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: none;
     background: #005F73;
     color: #fff;
     text-align: center;
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .mini-select {
-    padding: 4px;
-    border-radius: 6px;
+    height: 32px;
+    padding: 4px 8px;
+    border-radius: 8px;
     border: none;
     background: #005F73;
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .mini-select.wide { 
-    width: 100px; 
+    width: 120px; 
 }
 
 .eval-footer {
@@ -618,44 +631,52 @@ html, body {
 }
 
 .patient-badge {
-    font-size: 10px;
+    font-size: 12px;
     color: #E9D8A6;
+    font-weight: 700;
 }
 
 .btn-submit {
     background: #CA6702;
     border: none;
     color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: #EE9B00;
 }
 
 /* Actions Bar */
 .action-toolbar {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
 }
 
 .tool-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border: 1px solid rgba(255,255,255,0.15);
     background: #005F73;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s ease;
 }
 
 .tool-btn.active {
     background: #EE9B00;
+    border-color: #ffffff;
 }
 
 .prism-control-box {
@@ -663,25 +684,29 @@ html, body {
     flex-direction: column;
     align-items: center;
     background: rgba(255,255,255,0.05);
-    padding: 4px 6px;
-    border-radius: 10px;
-    gap: 2px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    gap: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .unit-tag {
-    font-size: 8px;
+    font-size: 10px;
     color: #94D2BD;
     text-transform: uppercase;
+    font-weight: 800;
 }
 
 .prism-control-box input {
-    width: 36px;
+    width: 48px;
+    height: 28px;
     border: none;
     background: transparent;
     color: #fff;
     text-align: center;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 16px;
+    outline: none;
 }
 
 .rotate-btn {
@@ -689,7 +714,11 @@ html, body {
     background: transparent;
     color: #E9D8A6;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Modals & Tutorials */
@@ -764,7 +793,7 @@ html, body {
 
 .tutorial-box {
     position: absolute;
-    bottom: 100px;
+    bottom: 110px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -802,15 +831,15 @@ html, body {
 
 /* ================= MEDIA QUERIES (TABLETS & PORTRAIT MOBILES) ================= */
 @media screen and (max-width: 768px) {
-    /* Eyes position is lifted higher and scaled for mobile screens */
     .eyes-container {
         top: 28% !important;
-        transform: translate(-50%, -50%) scale(0.82);
+        transform: translate(-50%, -50%) scale(1.0);
     }
 
-    /* Scaling tools for compact screens */
+    /* Target tool scaling for tablets */
     .target-tool {
-        height: 80px;
+        height: 100px;
+        width: 45px;
     }
 
     /* Bottom Bar Mobile Layout Fix */
@@ -818,10 +847,10 @@ html, body {
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
-        padding: 8px 10px;
-        max-height: 45vh; /* Sets a clear boundary for the bottom dock */
-        overflow-y: auto;  /* Allows scrolling if elements exceed height */
-        gap: 8px;
+        padding: 10px 12px;
+        max-height: 48vh;
+        overflow-y: auto;
+        gap: 12px;
     }
 
     .bottom-bar > * {
@@ -847,9 +876,10 @@ html, body {
     }
 
     .matrix-row input[type="number"], .mini-num {
-        width: 38px;
+        width: 44px;
+        height: 30px;
         padding: 3px;
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .ack-badge-corner {
@@ -869,15 +899,36 @@ html, body {
 @media screen and (max-width: 480px) {
     .eyes-container {
         top: 25% !important;
-        transform: translate(-50%, -50%) scale(0.72);
+        transform: translate(-50%, -50%) scale(0.9);
     }
     
     .eye-socket {
-        width: 100px;
-        height: 50px;
+        width: 130px;
+        height: 65px;
+    }
+
+    .target-tool {
+        width: 40px;
+        height: 90px;
+    }
+
+    .target-cross {
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
     }
 
     .bottom-bar {
-        padding: 6px 8px;
+        padding: 8px 10px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .matrix-row label {
+        font-size: 11px;
+        width: 45px;
+    }
+    .eye-toggle-btn {
+        padding: 8px 12px;
+        font-size: 12px;
     }
 }
