@@ -907,15 +907,16 @@ html, body {
         height: 65px;
     }
 
+    /* Target Tool அளவை பெரியதாக்க அப்டேட் செய்யப்பட்டது */
     .target-tool {
-        width: 40px;
-        height: 90px;
+        width: 60px;       /* பழையது: 40px -> இப்போது 60px */
+        height: 140px;     /* பழையது: 90px -> இப்போது 140px */
     }
 
     .target-cross {
-        width: 22px;
-        height: 22px;
-        font-size: 13px;
+        width: 32px;       /* பழையது: 22px -> இப்போது 32px */
+        height: 32px;      /* பழையது: 22px -> இப்போது 32px */
+        font-size: 18px;   /* பழையது: 13px -> இப்போது 18px */
     }
 
     .bottom-bar {
