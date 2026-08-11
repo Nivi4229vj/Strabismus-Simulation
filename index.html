@@ -11,6 +11,7 @@
 
     <div class="simulator-app">
 
+        <!-- 1. LANDING SCREEN -->
         <div class="screen active" id="startScreen">
             <div class="landing-card">
                 <div class="hospital-badge">
@@ -34,6 +35,7 @@
             </div>
         </div>
 
+        <!-- 2. MODE SELECTION SCREEN -->
         <div class="screen" id="modeScreen">
             <div class="landing-card mode-card">
                 <div class="hospital-badge">
@@ -63,6 +65,7 @@
             </div>
         </div>
 
+        <!-- 3. SIMULATOR SCREEN -->
         <div class="screen" id="simulatorScreen">
             
             <div class="sim-header">
@@ -107,9 +110,13 @@
                 </div>
             </div>
 
+            <!-- RESTRUCTURED BOTTOM BAR (Fixing Eye -> Tropia/Phoria -> Light/Link -> Prism) -->
             <div class="bottom-bar">
+                
+                <!-- 1. Fixing Eye Button -->
                 <button class="eye-toggle-btn active" id="btnOD">Fixing Eye: OD</button>
 
+                <!-- 2. Explore Mode Inputs (Tropia & Phoria) -->
                 <div class="panel-section" id="exploreControls">
                     <div class="input-matrix">
                         <div class="matrix-header">
@@ -129,6 +136,7 @@
                     </div>
                 </div>
 
+                <!-- Test Mode Panel (If Active) -->
                 <div class="panel-section hidden" id="testControls">
                     <div class="test-eval-box">
                         <div class="eval-row">
@@ -155,20 +163,24 @@
                     </div>
                 </div>
 
+                <!-- 3. Light and Link Buttons -->
                 <div class="action-toolbar">
                     <button class="tool-btn" id="btnPenlight" title="Penlight Reflex">🔦</button>
                     <button class="tool-btn" id="btnLinkTools" title="Link Occluder + Prism">🔗</button>
-
-                    <div class="prism-control-box">
-                        <span class="unit-tag">Prism Power</span>
-                        <input type="number" id="prismPower" value="20" min="0" max="50">
-                        <button class="rotate-btn" id="btnRotatePrism" title="Base Orientation">🔄</button>
-                    </div>
                 </div>
+
+                <!-- 4. Prism Control Box -->
+                <div class="prism-control-box">
+                    <span class="unit-tag">Prism Power</span>
+                    <input type="number" id="prismPower" value="20" min="0" max="50">
+                    <button class="rotate-btn" id="btnRotatePrism" title="Base Orientation">🔄</button>
+                </div>
+
             </div>
 
         </div>
 
+        <!-- MODALS & TUTORIALS -->
         <div class="modal-overlay hidden" id="instructionModal">
             <div class="modal-content">
                 <button class="close-modal-btn" id="btnCloseModal">×</button>
