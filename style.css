@@ -434,8 +434,8 @@ html, body {
 
 /* Fixation Target Tool Fixes */
 .target-tool {
-    width: clamp(40px, 5vw, 55px); 
-    height: clamp(120px, 20vh, 200px); 
+    width: clamp(25px, 5vw, 25px); 
+    height: clamp(200px, 20vh, 200px); 
     background: #ffffff;
     border: 3px solid #005F73;
     border-radius: 14px;
