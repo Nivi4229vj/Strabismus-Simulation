@@ -1,880 +1,91 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-}
-
-html, body {
-    width: 100%;
-    height: 100dvh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background: #001219;
-    color: #0f172a;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Full Screen Simulator Container */
-.simulator-app {
-    position: relative;
-    width: 100%;
-    height: 100dvh;
-    background: #ffffff;
-    overflow: hidden;
-    border: none;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Screen Transitions */
-.screen {
-    position: absolute;
-    inset: 0;
-    display: none;
-    flex-direction: column;
-    background: #ffffff;
-    width: 100%;
-    height: 100dvh;
-}
-
-.screen.active {
-    display: flex;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* ================= 1 & 2. ARAVIND BRANDED LANDING (CENTER ALIGNED) ================= */
-.landing-card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #005F73 0%, #0A9396 100%);
-    padding: clamp(20px, 4vh, 40px) clamp(16px, 5vw, 60px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ffffff;
-    box-sizing: border-box;
-    gap: clamp(16px, 3vh, 24px);
-    overflow-y: auto;
-}
-
-.hospital-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(8px);
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: clamp(11px, 1.2vw, 13px);
-    letter-spacing: 1px;
-    font-weight: 800;
-    width: fit-content;
-    color: #E9D8A6;
-    margin: 0 auto;
-}
-
-.badge-dot {
-    width: 10px;
-    height: 10px;
-    background: #EE9B00;
-    border-radius: 50%;
-}
-
-.title-block {
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-.main-title {
-    font-size: clamp(26px, 4.5vw, 54px);
-    font-weight: 800;
-    line-height: 1.2;
-    color: #ffffff;
-}
-
-.highlight-text {
-    color: #E9D8A6;
-}
-
-.sub-title {
-    font-size: clamp(13px, 1.5vw, 18px);
-    opacity: 0.9;
-    margin-top: 10px;
-    font-weight: 500;
-    color: #94D2BD;
-}
-
-/* Acknowledgement White Box - Centered & Responsive */
-.ack-box {
-    background: #ffffff;
-    padding: clamp(20px, 3vh, 28px) clamp(20px, 3vw, 32px) clamp(50px, 7vh, 64px) clamp(20px, 3vw, 32px);
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    width: 100%;
-    max-width: 580px;
-    position: relative;
-    color: #001219;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.ack-label {
-    display: block;
-    font-size: 11px;
-    color: #005F73;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.ack-text {
-    font-size: clamp(12px, 1.3vw, 14px);
-    color: #2b2d42;
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-.ack-text strong {
-    color: #005F73;
-    font-weight: 700;
-}
-
-/* Launch Button */
-.start-btn {
-    position: absolute;
-    bottom: 16px;
-    right: 20px;
-    background: #CA6702;
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(202, 103, 2, 0.4);
-    transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.start-btn:hover {
-    background: #EE9B00;
-    transform: translateY(-2px);
-}
-
-.copyright-tag {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 500;
-    margin-top: auto;
-}
-
-/* ================= MODE SELECTION SCREEN ================= */
-.mode-card {
-    justify-content: center;
-    align-items: center;
-}
-
-.mode-options {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    width: 100%;
-    max-width: 580px;
-    margin: 10px auto;
-}
-
-.mode-select-btn {
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: clamp(14px, 2vh, 20px) clamp(16px, 2vw, 24px);
-    border-radius: 16px;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.mode-icon {
-    font-size: 26px;
-    background: rgba(255, 255, 255, 0.2);
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-.explore-theme {
-    background: rgba(0, 48, 73, 0.6);
-    color: #ffffff;
-}
-
-.test-theme {
-    background: #94D2BD;
-    color: #001219;
-}
-
-.mode-select-btn h3 {
-    font-size: clamp(15px, 1.8vw, 18px);
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-.mode-select-btn p {
-    font-size: clamp(12px, 1.2vw, 13px);
-    opacity: 0.85;
-    font-weight: 500;
-}
-
-.mode-select-btn:hover {
-    transform: translateX(6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.ack-badge-corner {
-    position: absolute;
-    bottom: 24px;
-    right: 32px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    padding: 8px 18px;
-    border-radius: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.ack-badge-corner:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* ================= 3. CLINICAL CANVAS & EYES ================= */
-.sim-header {
-    height: 50px;
-    background: #005F73;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(12px, 3vw, 24px);
-    width: 100%;
-    z-index: 50;
-    flex-shrink: 0;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.brand-mini {
-    font-size: 13px;
-    letter-spacing: 0.8px;
-    font-weight: 800;
-    color: #E9D8A6;
-}
-
-.icon-btn {
-    border: none;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mode-indicator {
-    font-size: clamp(12px, 1.5vw, 15px);
-    font-weight: 700;
-    color: #94D2BD;
-}
-
-/* Canvas Area Flexible Height for Fullscreen */
-.face-canvas {
-    position: relative;
-    width: 100%;
-    flex: 1;
-    background: #f0fdfa;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Positioned Eyes higher for portrait space */
-.eyes-container {
-    position: absolute;
-    top: 38%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    gap: clamp(30px, 8vw, 130px);
-    pointer-events: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-}
-
-/* ================= VECTOR 2D EYE GRAPHICS ================= */
-.eye-socket {
-    position: relative;
-    width: clamp(120px, 16vw, 190px);
-    height: clamp(65px, 8.5vw, 100px);
-    border-radius: 50%;
-    background: linear-gradient(180deg, #b2c2d4 0%, #ffffff 20%, #ffffff 80%, #b2c2d4 100%);
-    border: 3px solid #0a101d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.eye-label-tag {
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 10px;
-    font-weight: 800;
-    color: #005F73;
-    background: #e0f2fe;
-    padding: 2px 8px;
-    border-radius: 6px;
-    z-index: 5;
-    white-space: nowrap;
-}
-
-/* Blue Vector Iris */
-.iris-element {
-    width: clamp(45px, 6vw, 70px);
-    height: clamp(45px, 6vw, 70px);
-    border-radius: 50%;
-    position: relative;
-    transition: transform 0.04s cubic-bezier(0.25, 1, 0.5, 1);
-    border: 2px solid #00264d;
-    background: radial-gradient(circle, #0066cc 0%, #0052a5 70%, #003366 100%);
-    box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
-}
-
-.iris-element::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: repeating-conic-gradient(
-        from 0deg,
-        rgba(77, 166, 255, 0.8) 0deg 5deg,
-        rgba(0, 51, 102, 0.6) 5deg 10deg
-    );
-    -webkit-mask: radial-gradient(circle, transparent 32%, black 33%, black 95%, transparent 96%);
-    mask: radial-gradient(circle, transparent 32%, black 33%, black 95%, transparent 96%);
-    pointer-events: none;
-}
-
-.iris-element::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(14px, 2vw, 24px);
-    height: clamp(14px, 2vw, 24px);
-    background-color: #000000;
-    border-radius: 50%;
-    z-index: 2;
-}   
-
-.light-reflex {
-    position: absolute;
-    top: 22%;
-    left: 25%;
-    width: 6px;
-    height: 6px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    z-index: 3;
-    box-shadow: 0 0 3px #ffffff;
-}
-
-/* Draggable Clinical Tools */
-.drag-tool {
-    position: absolute;
-    z-index: 100;
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
-}
-
-.drag-tool:active { 
-    cursor: grabbing; 
-}
-
-/* Fixation Target Tool Fixes */
-.target-tool {
-    width: clamp(25px, 5vw, 25px); 
-    height: clamp(200px, 20vh, 200px); 
-    background: #ffffff;
-    border: 3px solid #005F73;
-    border-radius: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    left: 15px;
-    top: 15px;
-}
-
-.target-cross {
-    width: 28px; 
-    height: 28px;
-    background: #AE2012;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 16px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.occluder-tool {
-    width: clamp(65px, 8vw, 100px);
-    height: auto;
-    left: 80px;
-    top: 15px;
-}
-
-.occluder-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    pointer-events: none;
-    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
-}
-
-/* Prism Tool Container */
-.prism-tool {
-    width: clamp(60px, 7vw, 100px);
-    height: auto;
-    left: 160px;
-    top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.prism-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    pointer-events: none;
-    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
-}
-
-/* ================= UPDATED BOTTOM DOCK CONTROL PANEL ================= */
-.bottom-bar {
-    min-height: 90px;
-    width: 100%;
-    background: #001219;
-    padding: 12px clamp(16px, 3vw, 36px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    color: #ffffff;
-    position: relative;
-    z-index: 40;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-.eye-toggle-btn {
-    border: 1px solid #0A9396;
-    background: #005F73;
-    color: #ffffff;
-    padding: 12px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-}
-
-.eye-toggle-btn.active {
-    background: #CA6702;
-    border-color: #EE9B00;
-}
-
-/* Explore Matrix Inputs */
-.input-matrix {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(255,255,255,0.05);
-    padding: 10px 16px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.matrix-header {
-    display: flex;
-    justify-content: flex-end;
-    gap: 18px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #94D2BD;
-    padding-right: 6px;
-}
-
-.matrix-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-}
-
-.matrix-row label { 
-    width: 55px; 
-    color: #E9D8A6; 
-    font-size: 13px;
-}
-
-.matrix-row input[type="number"] {
-    width: 56px;
-    height: 34px;
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid #0A9396;
-    text-align: center;
-    background: #005F73;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 14px;
-    outline: none;
-}
-
-/* Test Mode Panel */
-.test-eval-box {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(255,255,255,0.05);
-    padding: 10px 16px;
-    border-radius: 14px;
-}
-
-.eval-row {
-    display: flex;
-    gap: 8px;
-}
-
-.mini-num {
-    width: 52px;
-    height: 32px;
-    padding: 4px;
-    border-radius: 8px;
-    border: none;
-    background: #005F73;
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.mini-select {
-    height: 32px;
-    padding: 4px 8px;
-    border-radius: 8px;
-    border: none;
-    background: #005F73;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.mini-select.wide { 
-    width: 120px; 
-}
-
-.eval-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.patient-badge {
-    font-size: 12px;
-    color: #E9D8A6;
-    font-weight: 700;
-}
-
-.btn-submit {
-    background: #CA6702;
-    border: none;
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    transition: background 0.2s ease;
-}
-
-.btn-submit:hover {
-    background: #EE9B00;
-}
-
-/* Actions Bar */
-.action-toolbar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.tool-btn {
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: #005F73;
-    color: #fff;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.tool-btn.active {
-    background: #EE9B00;
-    border-color: #ffffff;
-}
-
-.prism-control-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255,255,255,0.05);
-    padding: 6px 12px;
-    border-radius: 12px;
-    gap: 4px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.unit-tag {
-    font-size: 10px;
-    color: #94D2BD;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-
-.prism-control-box input {
-    width: 48px;
-    height: 28px;
-    border: none;
-    background: transparent;
-    color: #fff;
-    text-align: center;
-    font-weight: 800;
-    font-size: 16px;
-    outline: none;
-}
-
-.rotate-btn {
-    border: none;
-    background: transparent;
-    color: #E9D8A6;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-/* Modals & Tutorials */
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 18, 25, 0.85);
-    z-index: 200;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-}
-
-.modal-content {
-    background: #ffffff;
-    width: 100%;
-    max-width: 500px;
-    padding: clamp(20px, 3vw, 30px);
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
-
-.close-modal-btn {
-    position: absolute;
-    top: 14px;
-    right: 18px;
-    border: none;
-    background: transparent;
-    font-size: 24px;
-    cursor: pointer;
-    color: #005F73;
-}
-
-.modal-content h2 { 
-    font-size: clamp(18px, 2vw, 20px); 
-    color: #005F73; 
-    margin-bottom: 12px; 
-}
-
-.modal-content p { 
-    font-size: clamp(13px, 1.3vw, 14px); 
-    color: #475569; 
-    margin-bottom: 10px; 
-}
-
-.modal-content ul { 
-    margin-left: 20px; 
-    font-size: clamp(12px, 1.2vw, 14px); 
-    color: #334155; 
-    margin-bottom: 18px; 
-}
-
-.btn-primary {
-    background: #005F73;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-.tutorial-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 150;
-    pointer-events: none;
-}
-
-.tutorial-box {
-    position: absolute;
-    bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 380px;
-    background: #001219;
-    color: #ffffff;
-    padding: 14px 18px;
-    border-radius: 14px;
-    border: 1px solid #0A9396;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    pointer-events: auto;
-}
-
-#tutorialText { 
-    font-size: 12px; 
-    line-height: 1.4; 
-}
-
-.tutorial-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.btn-next {
-    background: #EE9B00;
-    color: #001219;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-/* Tablet devices breakpoint (768px and below) */
+/* ================= MEDIA QUERIES (TABLETS & PORTRAIT MOBILES) ================= */
 @media screen and (max-width: 768px) {
     .eyes-container {
-        top: 25% !important;
-        transform: translate(-50%, -50%) scale(0.95);
-        gap: 30px; /* இரண்டு கண்களுக்கும் இடையே உள்ள இடைவெளி */
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(1.0);
     }
 
-    .eye-socket {
-        width: 180px;  /* டேப்லெட்டுக்கு பெரிய கண் அளவு */
-        height: 90px;
+    /* Target tool scaling for tablets */
+    .target-tool {
+        height: 100px;
+        width: 45px;
     }
 
-    .iris {
-        width: 50px;   /* விழித்திரையின் அளவு (Iris) */
-        height: 50px;
+    /* Bottom Bar Mobile Layout Fix */
+    .bottom-bar {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 10px 12px;
+        max-height: 48vh;
+        overflow-y: auto;
+        gap: 12px;
+    }
+
+    .bottom-bar > * {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .action-toolbar {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .panel-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 2px;
+    }
+
+    .input-matrix, .test-eval-box {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .matrix-row input[type="number"], .mini-num {
+        width: 44px;
+        height: 30px;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .ack-badge-corner {
+        bottom: 12px;
+        right: 16px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .tutorial-box {
+        bottom: 120px;
+        width: 95%;
     }
 }
 
-/* Small mobile devices breakpoint (480px and below) */
+/* Small mobile devices breakpoint */
 @media screen and (max-width: 480px) {
     .eyes-container {
         top: 25% !important;
-        transform: translate(-50%, -50%) scale(1);
-        gap: 20px;
+        transform: translate(-50%, -50%) scale(0.9);
     }
     
     .eye-socket {
-        width: 155px;  /* பழையது: 130px -> இப்போது பெரியதாக 155px */
-        height: 78px;  /* பழையது: 65px -> இப்போது 78px */
+        width: 130px;
+        height: 65px;
     }
 
-    .iris {
-        width: 42px;   /* விழித்திரையின் அளவு (Iris) */
-        height: 42px;
-    }
-
+    /* Target Tool அளவை பெரியதாக்க அப்டேட் செய்யப்பட்டது */
     .target-tool {
-        width: 60px;
-        height: 140px;
+        width: 60px;       /* பழையது: 40px -> இப்போது 60px */
+        height: 140px;     /* பழையது: 90px -> இப்போது 140px */
     }
 
     .target-cross {
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
+        width: 32px;       /* பழையது: 22px -> இப்போது 32px */
+        height: 32px;      /* பழையது: 22px -> இப்போது 32px */
+        font-size: 18px;   /* பழையது: 13px -> இப்போது 18px */
     }
 
     .bottom-bar {
@@ -883,16 +94,10 @@ html, body {
 }
 
 @media screen and (max-width: 360px) {
-    .eye-socket {
-        width: 140px;  /* சிறிய மொபைல்களுக்கு ஏற்றவாறு பெரிதாக்கப்பட்டது */
-        height: 70px;
-    }
-
     .matrix-row label {
         font-size: 11px;
         width: 45px;
     }
-
     .eye-toggle-btn {
         padding: 8px 12px;
         font-size: 12px;
