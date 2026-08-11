@@ -432,10 +432,10 @@ html, body {
     cursor: grabbing; 
 }
 
-/* ================= MEDIUM SIZED FIXATION TARGET ================= */
+/* Fixation Target Tool Fixes */
 .target-tool {
-    width: clamp(25px, 5vw, 2px); 
-    height: clamp(200px, 20vh, 200px); 
+    width: clamp(40px, 5vw, 55px); 
+    height: clamp(120px, 20vh, 200px); 
     background: #ffffff;
     border: 3px solid #005F73;
     border-radius: 14px;
@@ -497,7 +497,7 @@ html, body {
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
 
-/* ================= UPDATED BOTTOM DOCK CONTROL PANEL (CENTERED) ================= */
+/* ================= UPDATED BOTTOM DOCK CONTROL PANEL ================= */
 .bottom-bar {
     min-height: 90px;
     width: 100%;
@@ -505,8 +505,8 @@ html, body {
     padding: 12px clamp(16px, 3vw, 36px);
     display: flex;
     align-items: center;
-    justify-content: center; /* எலிமென்ட்கள் அனைத்தையும் மையப்பகுதிக்குக் கொண்டுவரும் */
-    gap: 28px; /* ஒவ்வொரு எலிமென்ட்டிற்கும் இடையே நெருக்கமான சீரான இடைவெளி */
+    justify-content: center;
+    gap: 28px;
     color: #ffffff;
     position: relative;
     z-index: 40;
@@ -922,6 +922,7 @@ html, body {
         padding: 8px 10px;
     }
 }
+
 @media screen and (max-width: 360px) {
     .matrix-row label {
         font-size: 11px;
